@@ -6,7 +6,13 @@ const Header = () => {
     <header>
       <div className="wrapper">
         <div className="logo">
-          Marvel
+          <h1>Marvel</h1>
+        </div>
+        <div className="menu">
+          <h3>General</h3>
+          <h3>Movies</h3>
+          <h3>Films</h3>
+          <h3>Comics</h3>
         </div>
       </div>
     </header>

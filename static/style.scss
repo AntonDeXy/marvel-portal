@@ -1,7 +1,33 @@
+$roboto: 'Roboto Condensed', sans-serif;
+
 body {
   margin: 0;
 }
 header {
   height: 10vh;
   background-color: #8E0000;
+  font-family: $roboto;
+  display: grid;
+  .wrapper {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 30%;
+    align-items: center;
+    .logo {
+      h1 {
+        color: white;
+        margin: 0;
+      }
+    }
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      text-align: right;
+      h3 {
+        margin: 0;
+        color: white;
+      }
+    }
+  }
 }

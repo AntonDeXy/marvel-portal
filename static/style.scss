@@ -1,11 +1,12 @@
 $roboto: 'Roboto Condensed', sans-serif;
+$redBg : #8E0000;
 
 body {
   margin: 0;
 }
 header {
   height: 10vh;
-  background-color: #8E0000;
+  background-color: $redBg;
   font-family: $roboto;
   display: grid;
   .wrapper {
@@ -27,6 +28,83 @@ header {
       h3 {
         margin: 0;
         color: white;
+      }
+    }
+  }
+}
+
+main {
+  .carousel {
+    background-color: rgb(94, 94, 94);
+    .slide, .carousel-inner, .carousel-item {
+      width: 80vw;
+      height: auto;
+      max-height: 80vh;
+      margin: 0 auto;
+      background-color: grey;
+      img, .carousel-item {
+        width: 100%;
+      }
+    }
+  }
+  .moreInfo {
+    height: 10vh;
+    background-color: $redBg;
+    text-align: center;
+    display: grid;
+    align-items: center;
+    h3 {
+      color: white;
+      font-family: $roboto;
+      margin: 0;
+      font-size: 35px;
+    }
+  }
+  .section {
+    // background: url("./imgs/marvelBG.jpg");
+    background-size: 100%;
+    display: grid;
+    height: auto;
+    .marvelBg {
+      width: 100vw;
+      position: fixed;
+      z-index: -1;
+      top: 0;
+    }
+    .wrapper {
+      width: 85%;
+      margin: 0 auto;
+      display: grid;
+      gap: 35px;      
+      .sectionsBlog {
+        padding: 15px;
+        border-radius: 5px;
+        width: 100%;
+        display: grid;
+        background-color: rgba(0, 0, 0, 0.8);
+        grid-template-columns: repeat(5, 1fr), auto;
+        grid-gap: 15px;
+        align-items: center;
+        h1 {
+          grid-column: 1/7;
+          color: white;
+        }
+        .SectionsCard {
+          width: 100%;
+          color: white;
+          img {
+            width: 100%;
+          }
+        }
+        .row-right {
+          // display: inline-block;
+          // width: 170px;
+          img {
+          width: 70px;
+
+            // width: 100%;
+          }
+        }
       }
     }
   }

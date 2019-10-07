@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Slider from './Slider';
 import SectionsBlog from './SectionsBlog';
 import marvelBg from '../../static/imgs/marvelBGBlured.jpg'
@@ -9,6 +9,7 @@ const Main = () => {
     { id: 1, title: 'Movies' },
     { id: 1, title: 'Heroes' }
   ]
+
   return (
     <main>
       <Slider />
@@ -18,13 +19,14 @@ const Main = () => {
       <div className="section">
         <img className='marvelBg' src={marvelBg} alt="" />
         <div className="wrapper">
-          {sections.map(section =>
-            <SectionsBlog key={section.id} title={section.title} />
+          {sections.map(e =>
+            <SectionsBlog key={e.id} title={e.title} />
           )}
         </div>
 
       </div>
-    </main>
+    </main >
+
   )
 }
 

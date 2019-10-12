@@ -2,38 +2,47 @@ import React, { useState, useEffect } from 'react'
 import SectionsCard from './SectionsCard';
 import row from '../../static/imgs/arrow-right-solid.svg'
 import axios from 'axios'
+import md5 from 'md5'
 
 const SectionsBlog = (props) => {
   const [comics, setComics] = useState(undefined)
+
+  let route = props.param
+
+  const baseUrl = `https://gateway.marvel.com:443/v1/public/${route}`
+  const privateKey = '67d3094b052340b894a685576d342787ba35dde8'
+  const publicKey = 'e2ea6d411120ada66be0368c2094101a'
+  const ts = Math.floor(Math.random() * 9)
+  const hash = md5(ts + privateKey + publicKey)
+  let params
+  const url = `${baseUrl}?${params ? `${params}&` : ''}ts=${ts}&apikey=${publicKey}&hash=${hash}`
+
+
   useEffect(() => {
     (async () => {
-      const res = await axios.get('https://gateway.marvel.com/v1/public/comics?ts=7&apikey=da88af68ed28248ff413ff968d6fe6a4&hash=8d289393066c35ef44aa5d141ce57039')
+      const res = await axios.get(url)
       setComics(res.data.data.results)
     })()
   }, [])
 
-  const cards = [
-    { id: 1, title: 'Title', imgUrl: '', },
-    { id: 2, title: 'Title', imgUrl: '', },
-    { id: 3, title: 'Title', imgUrl: '', },
-    { id: 4, title: 'Title', imgUrl: '', },
-    { id: 5, title: 'Title', imgUrl: '', },
-  ]
   let comicsesForRender = undefined
-  if (comics) {
-    comicsesForRender = [comics[0], comics[1], comics[2], comics[3]]
-    console.log(comicsesForRender)
 
+
+  if (comics) {
+    comicsesForRender = comics.slice([0], [4])
+    // console.log(comicsesForRender)
   }
   return (
     <>
       {comicsesForRender ?
         <div className="sectionsBlog">
+          <>
           <h1>{props.title}</h1>
           {comicsesForRender
             ? <Card comics={comicsesForRender} />
             : 'loading..'
           }
+          </>
         </div>
         : 'loading'
       }
@@ -42,17 +51,20 @@ const SectionsBlog = (props) => {
   )
 }
 
-const Card = (props) => (
-  <>
-    {
-      props.comics.map(card =>
-        <SectionsCard title={card.title} imgUrl={card.imgUrl} />
-      )
-    }
-    <div className='row-right'>
-      <img src={row} alt="" />
-    </div>
-  </>
-)
+const Card = (props) => {
+  return (
+    <>
+      {
+        props.comics.map(card =>
+          <SectionsCard title={card.title} imgExt={card.thumbnail && card.thumbnail.extension} imgUrl={card.thumbnail ? card.thumbnail.path : null} />
+        )
+      }
+      <div className='row-right'>
+        <img src={row} alt="" />
+      </div>
+    </>
+  )
+
+}
 
 export default SectionsBlog

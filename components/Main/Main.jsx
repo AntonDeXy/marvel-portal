@@ -5,9 +5,9 @@ import marvelBg from '../../static/imgs/marvelBGBlured.jpg'
 
 const Main = () => {
   const sections = [
-    { id: 1, title: 'Comics' },
-    { id: 1, title: 'Movies' },
-    { id: 1, title: 'Heroes' }
+    { id: 1, title: 'Comics', param: 'comics' },
+    { id: 1, title: 'Movies', param: 'series' },
+    { id: 1, title: 'Heroes', param: 'stories' }
   ]
 
   return (
@@ -20,7 +20,7 @@ const Main = () => {
         <img className='marvelBg' src={marvelBg} alt="" />
         <div className="wrapper">
           {sections.map(e =>
-            <SectionsBlog key={e.id} title={e.title} />
+            <SectionsBlog key={e.id} param={e.param} title={e.title} />
           )}
         </div>
 

@@ -6,8 +6,9 @@ import marvelBg from '../../static/imgs/marvelBGBlured.jpg'
 const Main = () => {
   const sections = [
     { id: 1, title: 'Comics', param: 'comics' },
-    { id: 1, title: 'Movies', param: 'series' },
-    { id: 1, title: 'Heroes', param: 'stories' }
+    { id: 2, title: 'Movies', param: 'series' },
+    { id: 3, title: 'Stories', param: 'stories' },
+    { id: 4, title: 'Heroes', param: 'characters' }
   ]
 
   return (

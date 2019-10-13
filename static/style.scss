@@ -35,6 +35,7 @@ header {
 }
 
 main {
+  display: grid;
   .carousel {
     background-color: rgb(94, 94, 94);
     .slide, .carousel-inner, .carousel-item {
@@ -47,6 +48,12 @@ main {
         width: 100%;
       }
     }
+  }
+  .marvelBg {
+    width: 100vw;
+    position: fixed;
+    z-index: -1;
+    top: 0;
   }
   .moreInfo {
     height: 10vh;
@@ -66,12 +73,6 @@ main {
     background-size: 100%;
     display: grid;
     height: auto;
-    .marvelBg {
-      width: 100vw;
-      position: fixed;
-      z-index: -1;
-      top: 0;
-    }
     .wrapper {
       width: 85%;
       margin: 0 auto;
@@ -83,7 +84,7 @@ main {
         width: 100%;
         display: grid;
         background-color: rgba(0, 0, 0, 0.8);
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr auto;
+        grid-template-columns: 1fr 1fr 1fr 1fr 80px;
         grid-template-rows: auto 1fr auto;
         grid-gap: 15px;
         align-items: start;
@@ -102,14 +103,31 @@ main {
             width: 100%;
           }
         // }
-        .row-right {
+        .row {
           align-self: center;
           justify-self: right;
-          img {
-          width: 70px;
+          .row-right {
+            align-self: center;
+            justify-self: right;
+            img {
+              width: 70px;
+            }
           }
         }
+        
       }
+    } 
+  }
+  .allWrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-self: center;
+    gap: 15px;
+    padding: 15px;
+    img {
+      width: 100%;
     }
   }
 }

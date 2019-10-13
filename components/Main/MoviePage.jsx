@@ -1,7 +1,13 @@
 import React from 'react'
 import Img from '../../static/imgs/ironManComics.jpg'
+import { useRouter } from 'next/router'
+
 
 const MoviePage = () => {
+  const router = useRouter()
+  // console.log(router)
+  let path = router.asPath
+
   return (
     <main className="MoviePage">
       <div className="wrapper">

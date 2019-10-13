@@ -3,6 +3,7 @@ import SectionsCard from './SectionsCard';
 import row from '../../static/imgs/arrow-right-solid.svg'
 import axios from 'axios'
 import md5 from 'md5'
+import Link from 'next/link'
 
 const SectionsBlog = (props) => {
   const [comics, setComics] = useState(undefined)
@@ -30,18 +31,24 @@ const SectionsBlog = (props) => {
 
   if (comics) {
     comicsesForRender = comics.slice([0], [4])
-    // console.log(comicsesForRender)
   }
   return (
     <>
       {comicsesForRender ?
         <div className="sectionsBlog">
           <>
-          <h1>{props.title}</h1>
-          {comicsesForRender
-            ? <Card comics={comicsesForRender} />
-            : 'loading..'
-          }
+            <h1>{props.title}</h1>
+            {comicsesForRender
+              ? <Cards param={props.param} comics={comicsesForRender} />
+              : 'loading..'
+            }
+            <Link href='/all' as={`/${props.param}`}>
+              <a className='row'>
+                <div className='row-right'>
+                  <img src={row} alt="" />
+                </div>
+              </a>
+            </Link>
           </>
         </div>
         : 'loading'
@@ -51,17 +58,19 @@ const SectionsBlog = (props) => {
   )
 }
 
-const Card = (props) => {
+export const Cards = (props) => {
+  // console.log(props.comics[0])
   return (
     <>
       {
         props.comics.map(card =>
-          <SectionsCard title={card.title} imgExt={card.thumbnail && card.thumbnail.extension} imgUrl={card.thumbnail ? card.thumbnail.path : null} />
+          <SectionsCard title={card.title ? card.title : card.name}
+          imgExt={card.thumbnail && card.thumbnail.extension}
+          imgUrl={card.thumbnail ? card.thumbnail.path : null} 
+          param={props.param}
+          cardId={card.id}/>
         )
       }
-      <div className='row-right'>
-        <img src={row} alt="" />
-      </div>
     </>
   )
 

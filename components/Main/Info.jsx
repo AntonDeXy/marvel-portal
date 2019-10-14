@@ -3,7 +3,7 @@ import Img from '../../static/imgs/ironManComics.jpg'
 import { useRouter } from 'next/router'
 
 
-const MoviePage = () => {
+const Info = () => {
   const router = useRouter()
   // console.log(router)
   let path = router.asPath
@@ -43,4 +43,4 @@ const MoviePage = () => {
   )
 }
 
-export default MoviePage
+export default Info

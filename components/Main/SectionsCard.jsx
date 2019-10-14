@@ -38,9 +38,10 @@ const SectionsCard = (props) => {
   } else {
     title = props.name
   }
+  console.log(props.id)
   return (
     // <div className="SectionsCard">
-    <Link href='/all' as={`${props.param}`}>
+    <Link href='/info' as={`/${props.param}/${props.cardId}`}>
       <a>
         <img src={imgUrl} alt="" />
         <h2>{title}</h2>

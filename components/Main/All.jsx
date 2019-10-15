@@ -1,28 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import SectionsCard from './SectionsCard'
+// import SectionsCard from './SectionsCard'
+import Img from '../../static/imgs/ironManComics.jpg'
 import { useRouter } from 'next/router'
 import md5 from 'md5'
 import axios from 'axios'
 import marvelBg from '../../static/imgs/marvelBGBlured.jpg'
+import { getArticles } from '../../static/functions';
+import Link from 'next/link'
 
 const All = (props) => {
   const router = useRouter()
   const [cards, setCards] = useState(undefined)
   const route = router.asPath
-  const baseUrl = `https://gateway.marvel.com:443/v1/public${route}`
-  const privateKey = '67d3094b052340b894a685576d342787ba35dde8'
-  const publicKey = 'e2ea6d411120ada66be0368c2094101a'
-  const ts = Math.floor(Math.random() * 9)
-  const hash = md5(ts + privateKey + publicKey)
-  let params
-  const url = `${baseUrl}?${params ? `${params}&` : ''}ts=${ts}&apikey=${publicKey}&hash=${hash}`
 
   useEffect(() => {
     (async () => {
-      const res = await axios.get(url)
-      // console.log(res.data.data.results)
-      setCards(res.data.data.results)
-      // console.log(cards)
+      const res = await getArticles(route)
+      setCards(res)
     })()
   }, [cardsForRender])
 
@@ -30,7 +24,7 @@ const All = (props) => {
 
   if(cards) {
     cardsForRender = cards
-    console.log(cardsForRender)
+    // console.log(cardsForRender)
   }
 
   return (
@@ -39,12 +33,37 @@ const All = (props) => {
       {cardsForRender
       ? <div className="allWrapper">
           {cardsForRender.map(e =>
-            <SectionsCard param={route} {...e} />
+            <GeneralPageCard param={route} {...e} />
           )}
         </div>
         : 'loading..'
       }
     </main>
+  )
+}
+
+const GeneralPageCard = (props) => {
+  let imgUrl
+  console.log(props.param + '/' +props.id)
+  if(props.images[0]) {
+    imgUrl = props.images[0].path + '.' + props.images[0].extension
+  } else {
+    imgUrl = Img
+  }
+
+  let title
+  if (props.title) {
+    title = props.title
+  } else {
+    title = props.name
+  }
+  return (
+    <Link href='/info' as={`${props.param}/${props.id}`}>
+      <a>
+        <img src={imgUrl} alt="" />
+        <h2>{title}</h2>
+      </a>
+    </Link >
   )
 }
 

@@ -6,7 +6,11 @@ const Header = () => {
     <header>
       <div className="wrapper">
         <div className="logo">
-          <h1>Marvel</h1>
+          <Link href='/'>
+            <a>
+              <h1>Marvel</h1>
+            </a>
+          </Link>
         </div>
         <div className="menu">
           <h3>General</h3>

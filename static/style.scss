@@ -17,6 +17,9 @@ header {
     grid-template-columns: auto 30%;
     align-items: center;
     .logo {
+      a {
+        text-decoration: none;
+      }
       h1 {
         color: white;
         margin: 0;
@@ -36,6 +39,7 @@ header {
 
 main {
   display: grid;
+  min-height: 80vh;
   .carousel {
     background-color: rgb(94, 94, 94);
     .slide, .carousel-inner, .carousel-item {
@@ -126,15 +130,18 @@ main {
     justify-self: center;
     gap: 15px;
     padding: 15px;
-    img {
-      width: 100%;
+    text-transform: capitalize;
+    a {
+      img {
+        width: 100%;
+      }
     }
   }
 }
 
 .MoviePage {
   display: grid;
-  height: 80vh;
+  // min-height: 80vh;
   background-color: rgb(114, 114, 114);
   justify-content: center;
   .wrapper {
@@ -143,21 +150,24 @@ main {
     height: 100%;
     display: grid;
     grid-template-columns: 20% auto;
-    grid: 15px;
+    gap: 15px;
     .img {
       img {
         width: 100%;
       }
     }
     .info {
-
+      color: white;
+      .otherInfo {
+        div {
+          margin-bottom: 10px;
+        }
+      }
     }
   }
 }
 
 footer {
-  position: relative;
-  top: 0px;
   width: 100%;
   font-size: 20px;
   height: 10vh;

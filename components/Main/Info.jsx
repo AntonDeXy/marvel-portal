@@ -15,7 +15,7 @@ const Info = () => {
   useEffect(() => {
     (async () => {
       const res = await getArticles(router.asPath)
-      console.log(res[0])
+      // console.log(res[0])
       setCards(res)
     })()
   }, [])
@@ -75,14 +75,14 @@ const Info = () => {
               </div>
             </div>
             }
-
+            {cards[0].upc &&
             <div>
               <strong>UPC: </strong>
               <div>
                 {cards[0].upc}
               </div>
             </div>
-
+            }
             <span>
               {cards[0].description}
             </span>

@@ -10,7 +10,7 @@ import Link from 'next/link'
 
 const All = (props) => {
   const router = useRouter()
-  // console.log(router)
+  console.log(router)
   const [cards, setCards] = useState(undefined)
   const route = router.asPath
 
@@ -43,15 +43,15 @@ const All = (props) => {
 }
 
 const GeneralPageCard = (props) => {
-  let imgUrl
-  console.log(props.param + '/' + props.id)
-  if(props.images) {
-    imgUrl = props.images[0].path + '.' + props.images[0].extension
-  } else if (props.thumbnail) {
-    imgUrl = props.thumbnail.path + '.' + props.thumbnail.extension
-  } else {
-    imgUrl = Img
-  }
+  // let imgUrl
+  // console.log(props.param + '/' + props.id)
+  // if(props.images) {
+  //   imgUrl = props.images[0].path + '.' + props.images[0].extension
+  // } else if (props.thumbnail) {
+  //   imgUrl = props.thumbnail.path + '.' + props.thumbnail.extension
+  // } else {
+  //   imgUrl = Img
+  // }
 
   console.log(props)
 
@@ -64,7 +64,7 @@ const GeneralPageCard = (props) => {
   return (
     <Link href='/info' as={`${props.param}/${props.id}`}>
       <a>
-        <img src={imgUrl} alt="" />
+        <img src={props.thumbnail.path + '.' + props.thumbnail.extension} alt="" />
         <h2>{title}</h2>
       </a>
     </Link >

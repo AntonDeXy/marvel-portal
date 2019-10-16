@@ -12,7 +12,7 @@ const SectionsBlog = (props) => {
   useEffect(() => {
     (async () => {
       const res = await getArticles(props.param)
-        console.log(res)
+        // console.log(res)
         setCards(res)
     })()
   }, [])
@@ -50,7 +50,6 @@ const SectionsBlog = (props) => {
 }
 
 export const Cards = (props) => {
-  // console.log(props.comics[0])
   return (
     <>
       {

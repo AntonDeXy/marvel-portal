@@ -17,3 +17,18 @@ export const getArticles = async (route) => {
 export const firstLettetToUpperCase = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1)
 } 
+
+
+export const getOtherInf = async (route) => {
+  const baseUrl = {route}
+  const privateKey = '67d3094b052340b894a685576d342787ba35dde8'
+  const publicKey = 'e2ea6d411120ada66be0368c2094101a'
+  const ts = Math.floor(Math.random() * 9)
+  const hash = md5(ts + privateKey + publicKey)
+  let params
+  const url = `${baseUrl}?${params ? `${params}&` : ''}ts=${ts}&apikey=${publicKey}&hash=${hash}`
+  const res = await axios.get(url)
+  console.log(url)
+  console.log(res.data.data.results)
+  return res.data.data.results
+}

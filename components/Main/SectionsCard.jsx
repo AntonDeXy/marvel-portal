@@ -10,6 +10,7 @@ const SectionsCard = (props) => {
     (async () => {
       const res = await getArticles(props.param)
       setCards(res)
+      // console.log(res)
     })()
   }, [])
 

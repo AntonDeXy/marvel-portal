@@ -10,6 +10,7 @@ import Link from 'next/link'
 
 const All = (props) => {
   const router = useRouter()
+  // console.log(router)
   const [cards, setCards] = useState(undefined)
   const route = router.asPath
 
@@ -24,7 +25,6 @@ const All = (props) => {
 
   if(cards) {
     cardsForRender = cards
-    // console.log(cardsForRender)
   }
 
   return (
@@ -44,12 +44,16 @@ const All = (props) => {
 
 const GeneralPageCard = (props) => {
   let imgUrl
-  console.log(props.param + '/' +props.id)
-  if(props.images[0]) {
+  console.log(props.param + '/' + props.id)
+  if(props.images) {
     imgUrl = props.images[0].path + '.' + props.images[0].extension
+  } else if (props.thumbnail) {
+    imgUrl = props.thumbnail.path + '.' + props.thumbnail.extension
   } else {
     imgUrl = Img
   }
+
+  console.log(props)
 
   let title
   if (props.title) {

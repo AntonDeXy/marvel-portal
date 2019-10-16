@@ -163,6 +163,16 @@ main {
           margin-bottom: 10px;
         }
       }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(6,1fr);
+        h2 {
+          grid-column: 1/7
+        }
+        img {
+          width: 100%;
+        }
+      }
     }
   }
 }

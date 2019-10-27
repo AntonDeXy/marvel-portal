@@ -33,7 +33,7 @@ const SectionsBlog = (props) => {
               ? <Cards param={props.param} cards={cardsForRender} />
               : 'loading..'
             }
-            <Link href='/all' as={`/${props.param}`}>
+            <Link href={`/all?type=${props.param}`} as={`/all?type=${props.param}`}>
               <a className='row'>
                 <div className='row-right'>
                   <img src={row} alt="" />

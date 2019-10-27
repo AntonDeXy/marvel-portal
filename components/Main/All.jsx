@@ -12,14 +12,15 @@ const All = (props) => {
   const router = useRouter()
   console.log(router)
   const [cards, setCards] = useState(undefined)
-  const route = router.asPath
+  const route = router.query.type
 
+  let res
   useEffect(() => {
     (async () => {
-      const res = await getArticles(route)
+      res = await getArticles(route)
       setCards(res)
     })()
-  }, [cardsForRender])
+  }, route)
 
   let cardsForRender = undefined
 
@@ -62,7 +63,7 @@ const GeneralPageCard = (props) => {
     title = props.name
   }
   return (
-    <Link href='/info' as={`${props.param}/${props.id}`}>
+    <Link href={`/info?type=${props.param}/${props.id}`} as={`/info?type=${props.param}/${props.id}`}>
       <a>
         <img src={props.thumbnail.path + '.' + props.thumbnail.extension} alt="" />
         <h2>{title}</h2>

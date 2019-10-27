@@ -10,6 +10,7 @@ export const getArticles = async (route) => {
   const hash = md5(ts + privateKey + publicKey)
   let params
   const url = `${baseUrl}?${params ? `${params}&` : ''}ts=${ts}&apikey=${publicKey}&hash=${hash}`
+  console.log(url)
   const res = await axios.get(url)
   return res.data.data.results
 }

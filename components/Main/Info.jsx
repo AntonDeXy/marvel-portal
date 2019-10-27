@@ -9,16 +9,16 @@ import Link from 'next/link'
 const Info = () => {
   const [cards, setCards] = useState(undefined)
   const [series, setSeries] = useState({})
-
   const router = useRouter()
-  
+  const route = router.query.type
+
   useEffect(() => {
     (async () => {
-      const res = await getArticles(router.asPath)
+      const res = await getArticles(route)
       // console.log(res[0])
       setCards(res)
     })()
-  }, [])
+  }, route)
 
   let imgUrl
 
